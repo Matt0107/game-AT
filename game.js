@@ -1,16 +1,19 @@
 class Game {
   constructor() {
-    this.player;
-    this.trainer;
+    this.player = new Player();
+    this.feed = [];
+    this.ball = new Ball();
   }
 
   preload() {
-    this.player = loadImage("./assets/enemy-jag.png");
-    this.trainer = loadImage("./assets/hero-jag.png");
+    this.desktopPlayer = loadImage("./assets/player-right.png");
+    this.trainer = loadImage("./assets/trainer.png");
+    this.ball.image = loadImage("./assets/ball.png");
   }
   draw() {
-    clear();
     this.player.draw();
-    this.trainer.draw();
+
+    image(game.trainer, 360, -40, 170, 200);
+    this.ball.draw();
   }
 }
