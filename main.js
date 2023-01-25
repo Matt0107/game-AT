@@ -1,6 +1,9 @@
+const game = new Game();
+
 let bg;
 function preload() {
   bg = loadImage("./assets/terrain.png");
+  game.preload();
 }
 
 function setup() {
@@ -8,7 +11,9 @@ function setup() {
 }
 
 function draw() {
+  clear();
   background(bg);
+  game.draw();
 }
 
 function keyPressed() {
