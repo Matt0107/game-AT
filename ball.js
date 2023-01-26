@@ -25,12 +25,13 @@ class Ball {
     let playerX = playerInfo.x + playerInfo.width / 2;
     let playerY = playerInfo.y + playerInfo.height / 2;
 
-    if (dist(obstacleX, obstacleY, playerX, playerY) < 75) {
+    if (dist(obstacleX, obstacleY, playerX - 10, playerY - 10) < 75) {
       playerInfo.score += 100;
+      this.velocity = -20;
       document.querySelector("#score span").innerText = playerInfo.score;
-      return false;
+      return true;
     } else if (playerInfo.score === 300) {
-      return text("You win", 10, 30);
+      return text("You won", 10, 30);
     } else if (obstacleY > playerY + 100) {
       playerInfo.lives -= 1;
       document.querySelector("#lives span").innerText = playerInfo.lives;
