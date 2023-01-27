@@ -31,17 +31,15 @@ class Ball {
       document.querySelector("#score span").innerText = playerInfo.score;
       return true;
     } else if (playerInfo.score === 300) {
-      return text("You won", 10, 30);
+      textSize(30);
+      return text("You won", 380, 350);
     } else if (obstacleY > playerY + 100) {
       playerInfo.lives -= 1;
       document.querySelector("#lives span").innerText = playerInfo.lives;
       return false;
     } else if (playerInfo.lives === 0) {
-      // return ctx.fillText(
-      //   "GAME OVER",
-      //   canvas.width / 2 - 100,
-      //   canvas.height / 2
-      // );
+      textSize(30);
+      return text("You lost", 380, 350);
     } else {
       return true;
     }
