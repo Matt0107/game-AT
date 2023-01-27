@@ -1,5 +1,5 @@
-let randomFirst = 6;
-let randomSecond = 2.5;
+let randomFirst = 10;
+let randomSecond = 5;
 
 class Ball {
   constructor(image, speed) {
@@ -30,16 +30,10 @@ class Ball {
       this.velocity = -20;
       document.querySelector("#score span").innerText = playerInfo.score;
       return true;
-    } else if (playerInfo.score === 300) {
-      textSize(30);
-      return text("You won", 380, 350);
     } else if (obstacleY > playerY + 100) {
       playerInfo.lives -= 1;
       document.querySelector("#lives span").innerText = playerInfo.lives;
       return false;
-    } else if (playerInfo.lives === 0) {
-      textSize(30);
-      return text("You lost", 380, 350);
     } else {
       return true;
     }

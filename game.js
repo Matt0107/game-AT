@@ -12,27 +12,38 @@ class Game {
     this.ball.image = loadImage("./assets/ball.png");
   }
   draw() {
-    this.ballSpeed += 0.0008;
-    this.player.draw();
+    this.ballSpeed += 0.003;
+    // this.player.draw();
+    if (this.player.lives > 0 && this.player.score < 1000) {
+      this.player.draw();
+      this.ball.draw();
+      if (frameCount % 150 === 0) {
+        this.feeds.push(new Ball(this.ball.image, this.ballSpeed));
+        console.log(this.ball.ballX);
+      }
+      this.feeds.forEach(function (feed) {
+        feed.draw();
+      });
+
+      this.feeds = this.feeds.filter((feed) => {
+        console.log(this);
+
+        if (feed.collision(this.player) || feed.x < 0 - feed.width) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
 
     image(game.trainer, 360, -40, 170, 200);
-    this.ball.draw();
 
-    if (frameCount % 150 === 0) {
-      this.feeds.push(new Ball(this.ball.image, this.ballSpeed));
+    if (this.player.score >= 1000) {
+      textSize(30);
+      text("You won", 380, 350);
+    } else if (this.player.lives === 0) {
+      textSize(30);
+      text("You lost", 380, 350);
     }
-    this.feeds.forEach(function (feed) {
-      feed.draw();
-    });
-
-    this.feeds = this.feeds.filter((feed) => {
-      console.log(this);
-
-      if (feed.collision(this.player) || feed.x < 0 - feed.width) {
-        return true;
-      } else {
-        return false;
-      }
-    });
   }
 }

@@ -5,7 +5,7 @@ class Player {
     this.x = 360;
     this.y = 800 - this.height;
     this.score = 0;
-    this.lives = 5;
+    this.lives = 3;
   }
   draw() {
     image(game.desktopPlayer, this.x, this.y, this.width, this.height);
